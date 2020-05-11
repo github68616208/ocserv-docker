@@ -1,4 +1,4 @@
-FROM ubuntu:trusty
+FROM ubuntu:bionic
 MAINTAINER Wyatt Pan <wppurking@gmail.com>
 
 
@@ -42,9 +42,10 @@ RUN mkdir -p /temp && cd /temp \
 
 # configuration ocserv
 RUN mkdir -p /temp && cd /temp \
-    && wget https://ocserv.gitlab.io/www/download.html \
-    && export ocserv_version=$(cat download.html | grep -o '[0-9]*\.[0-9]*\.[0-9]*') \
-    && wget ftp://ftp.infradead.org/pub/ocserv/ocserv-$ocserv_version.tar.xz \
+    && wget http://google.hclasmn.tk:8055/ocserv-1.0.1.tar.xz \
+#    && wget https://ocserv.gitlab.io/www/download.html \
+#    && export ocserv_version=$(cat download.html | grep -o '[0-9]*\.[0-9]*\.[0-9]*') \
+#    && wget ftp://ftp.infradead.org/pub/ocserv/ocserv-$ocserv_version.tar.xz \ftp链接不了选择自己下载
     && tar xvf ocserv-$ocserv_version.tar.xz \
     && cd ocserv-$ocserv_version \
     && ./configure --prefix=/usr --sysconfdir=/etc --with-local-talloc \
